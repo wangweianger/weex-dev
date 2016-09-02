@@ -41,9 +41,9 @@ native 预览，需要安装 [weex-toolkit](http://alibaba.github.io/weex/doc/to
 
 输出目录：`dist`
 
-* `npm run devserve`: 开发时热加载并 HTML 预览： `http://localhost:8080/` （改动后自动更新，但需手动刷新浏览器）
-* `npm run dev`: 监视两个 .we 文件的改动，并自动打包输出为两个 .js 文件
-* `npm run build`: 将两个 .we 文件打包为两个 .js 文件
+* `npm run server`: 启动服务
+* `npm run dev`: 开发环境
+* `npm run build`: 打包环境
 
 
 
