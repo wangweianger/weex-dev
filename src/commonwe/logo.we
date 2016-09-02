@@ -1,0 +1,23 @@
+<template>
+  <div class="bg">
+    <image style="width: 400; height: 400;" src="https://cdn4.iconfinder.com/data/icons/scripting-and-programming-languages/512/JQuery_logo-512.png"></image>
+    <text class="text">我的一句话</text>
+    <div>
+	  <text>muted:</text>
+	  <switch checked="true">muted:</switch>
+	</div>
+
+  </div>
+</template>
+
+<style>
+  	.bg {
+    	align-items: center;
+  	}
+</style>
+
+<script>
+  module.exports = {
+    data: {},
+  }
+</script>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>weex</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <meta name="apple-touch-fullscreen" content="yes" />
+  <meta name="format-detection" content="telephone=no, email=no" />
+  <!-- weex js jon in -->
+  <script src="./src/assets/js/weex.js"></script>
+</head>
+<body>
+<!-- weex main -->
+<div id="weex"></div>
+<!-- script -->
+<script>
+  /**Init weex instance depending on the url params.*/
+  (function () {
+    function getUrlParam (key) {
+      var reg = new RegExp('[?|&]' + key + '=([^&]+)')
+      var match = location.search.match(reg)
+      return match && match[1]
+    }
+    // 初始化参数
+    var loader = getUrlParam('loader') || 'xhr'
+    var page = getUrlParam('page') || 'dist/components/main.js'
+    // init 初始化
+    window.weex.init({
+      appId: location.href,
+      loader: loader,
+      source: page,
+      rootId: 'weex'
+    })
+  })();
+</script>
+</body>
+</html>

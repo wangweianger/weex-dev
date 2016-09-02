@@ -1,0 +1,76 @@
+<template>
+  <div class="bg">
+    <text class="title">最常使用</text>
+    <div class="tools">
+      <div repeat="tool in tools" class="tool" onclick="openTranslate()">
+          <image style="width: 120px; height: 120px;" src="{{tool}}"></image>
+          <text style="width: 120px; height: 20px;" class="subtitle">{{'翻译' + $index}}</text>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style>
+  .bg {
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: #dadada;
+    background-color: #F7F7F7;
+    margin: 20px;
+    width: 710px;
+  }
+  .title {
+    font-size: 30px;
+    left: 30;
+    top: 30;
+  }
+  .tools {
+    flex-direction: row;
+    justify-content: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 20;
+  }
+  .tool {
+    justify-content: center;
+    width: 120;
+    height: 200;
+    margin: 20;
+  }
+  .subtitle {
+    text-align: center;
+    font-size: 18px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+</style>
+
+<script>
+  module.exports = {
+    data: {
+      root: 'dist',
+      item: { name: 'translate' },
+      tools: ['http://e.hiphotos.baidu.com/image/pic/item/b7003af33a87e950c1bea34b15385343fbf2b468.jpg',
+              'http://d.hiphotos.baidu.com/image/pic/item/8b13632762d0f703521ac5fb0dfa513d2697c569.jpg',
+              'http://e.hiphotos.baidu.com/image/pic/item/b8014a90f603738d35e15c05b61bb051f819ec6a.jpg',
+              'http://g.hiphotos.baidu.com/image/pic/item/024f78f0f736afc3f7446f42b619ebc4b7451248.jpg'],
+      img: 'http://hbimg.b0.upaiyun.com/bbba96a35c57e7dc1e53e7d278e44e1fd68beb09713c-Tf9wre_fw658'
+    },
+    methods: {
+      openTranslate: function () {
+        var bundleUrl = this.$getConfig().bundleUrl
+        console.log('hit', bundleUrl)
+        var dirs = this.root.split('/');
+        dirs.forEach(function(dir, index) {
+          if (!dir) dirs.splice(index, 1);
+        });
+        var root = dirs.length > 0 ? dirs[0] : '';
+        var subRoot = dirs.length > 1 ? dirs.slice(1).join('/') + '/' : '';
+        console.log('open translate page')
+        //如果pc调试，加载这个页面渲染
+        var base = './index.html?page=./' + root + '/' + subRoot
+        this.$openURL(base + this.item.name + '.js')
+      },
+    }
+  }
+</script>
