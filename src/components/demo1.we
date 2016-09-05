@@ -1,0 +1,35 @@
+<template>
+  <div class="bg">
+    <logo></logo>
+    <searchbar></searchbar>
+    <common class="common"></common>
+  </div>
+</template>
+
+<style>
+  .bg {
+    background-color: #F2F2F2;
+  }
+  .common {
+     position: fixed;
+     left:0;
+     bottom: 10px;
+  }
+</style>
+
+<script>
+  var modal = require('@weex-module/modal')
+  modal.toast({'message': 'I am toast!', 'duration': 2});
+  require('../commonwe/logo.we')
+  require('../commonwe/searchbar.we')
+  require('../commonwe/common.we')
+  module.exports = {
+    data: {},
+    ready:function(){
+      modal.alert({
+        message: '网络通信失败，请确认网络状况',
+        okTitle: '好'
+      })
+    }
+  }
+</script>

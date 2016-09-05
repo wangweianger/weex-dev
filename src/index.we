@@ -1,0 +1,46 @@
+<template>
+    <list>
+      <cell repeat="{{items}}" onclick="redirect(name)">
+        <wxc-list-item class="text_block">
+          <text class="item-txt">{{ title }}</text>
+        </wxc-list-item>
+      </cell>
+    </list>
+</template>
+
+<style>
+  .text_block{
+    line-height:100px;
+    padding-left:20px;
+    color:#666;
+    font-weight:bold;
+    border-bottom:solid 1px #eee;
+  }
+</style>
+
+<script>
+  require('weex-components');
+  var modal = require('@weex-module/modal')
+  module.exports = {
+     data: {
+      root:'dist',
+      items:[
+        {name: 'components/demo1', title: 'demo-1'},
+        {name: 'components/demo2', title: 'demo-2'},
+        {name: 'components/demo3', title: 'demo-3'},
+        {name: 'components/demo4', title: 'demo-4'},
+        {name: 'components/demo5', title: 'demo-5'},
+      ]
+    },
+    ready(){
+      modal.toast({'message': '欢迎光临!', 'duration': 2});
+    },
+    methods:{
+      redirect(name){
+        var url= './index.html?page=./' + this.root +'/'+ name+'.js';
+        console.log(url);
+        this.$openURL(url);
+      },
+    }
+  }
+</script>

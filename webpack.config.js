@@ -17,7 +17,7 @@ function getEntry(dir) {
       if (stat.isFile() && extname === '.we') {
         var name = path.join(dir, path.basename(file, extname));
         entry[name] = fullpath + '?entry=true';
-      } else if (stat.isDirectory() && file !== 'commonwe') {
+      } else if (stat.isDirectory() && file !== 'commonwe' && file !== 'include') {
         var subdir = path.join(dir, file);
         getEntry(subdir);
       }
@@ -35,11 +35,19 @@ var config = {
     loaders: [
       {
         test: /\.we(\?[^?]+)?$/,
-        loaders: ['weex-loader']
+        loader: 'weex'
       },
       {
         test: /\.js(\?[^?]+)?$/,
-        loaders: ['weex-loader?type=script']
+        loader: 'weex?type=script'
+      },
+      {
+        test: /\.css(\?[^?]+)?$/,
+        loader: 'weex?type=style'
+      }, 
+      {
+        test: /\.html(\?[^?]+)?$/,
+        loader: 'weex?type=tpl'
       },
       //图片文件使用 url-loader 来处理，小于8kb的直接转为base64
       {

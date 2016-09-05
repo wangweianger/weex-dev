@@ -18,18 +18,15 @@
 </style>
 
 <script>
+  require('weex-components')
   var modal = require('@weex-module/modal')
-  modal.toast({'message': 'I am toast!', 'duration': 2});
-  import searchbar from '../commonwe/searchbar.we' 
-  import common from '../commonwe/common.we'
-  import logo from '../commonwe/logo.we'
+  import searchbar from './commonwe/searchbar.we' 
+  import common from './commonwe/common.we'
+  import logo from './commonwe/logo.we'
   module.exports = {
     data: {},
     ready:function(){
-      modal.alert({
-        message: '网络通信失败，请确认网络状况',
-        okTitle: '好'
-      })
+      modal.toast({'message': '欢迎光临!', 'duration': 2});
     }
   }
 </script>
